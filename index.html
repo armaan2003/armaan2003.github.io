@@ -275,7 +275,7 @@ function initScene() {
   scene.add(earth);
 
   new THREE.TextureLoader().load(
-    'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/textures/planets/earth_atmos_2048.jpg',
+    'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg',
     (tex) => {
       tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
       tex.minFilter = THREE.LinearMipmapLinearFilter;
@@ -333,8 +333,8 @@ function setupCameraControls() {
   window.addEventListener('mouseup', () => { dragging = false; });
   dom.addEventListener('mousemove', (e) => {
     if (!dragging) return;
-    camTheta += (e.clientX - lastX) * 0.005;
-    camPhi -= (e.clientY - lastY) * 0.005;
+    camTheta += (e.clientX - lastX) * 0.015;
+    camPhi -= (e.clientY - lastY) * 0.015;
     camPhi = Math.max(0.1, Math.min(Math.PI - 0.1, camPhi));
     lastX = e.clientX;
     lastY = e.clientY;
@@ -342,7 +342,7 @@ function setupCameraControls() {
   });
   dom.addEventListener('wheel', (e) => {
     e.preventDefault();
-    camDistance = Math.max(8, Math.min(50, camDistance + e.deltaY * 0.01));
+    camDistance = Math.max(8, Math.min(50, camDistance + e.deltaY * 0.04));
     updateCameraPosition();
   }, { passive: false });
 
